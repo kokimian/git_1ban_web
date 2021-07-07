@@ -1,0 +1,17 @@
+.djangoProject_header_logo {
+    margin: 2rem 0;
+    font-family: 'Pacifico', cursive;
+}
+
+.djangoProject_header_button {
+    margin-bottom: 2rem;
+}
+
+.djangoProject_header_button {
+    margin-top: 2rem;
+}
+
+.djangoProject_footer_logo {
+    margin: 1.5rem 0;
+    font-family: 'Pacifico', cursive;
+}
