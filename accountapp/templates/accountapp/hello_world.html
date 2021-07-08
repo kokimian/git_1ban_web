@@ -2,24 +2,15 @@
 
 {% block content %}
 
-     <style>
+    <div style="margin: 2rem; text-align: center;">
+        <h1>METHOD</h1>
 
-            .testing {
-                display: inline-block;
-                background-color: yellow;
-                margin: 1rem;
-                height: 48px;
-                width: 48px;
-                border-radius: .5rem;
-            }
-     </style>
+        <form action="/accounts/hello_world/" method="post">
+            {%  csrf_token %}  {# 해킹방지, 접근 토큰 #}
+            <input type="submit" class="px-5 btn btn-dark rounded-pill">  {# p-숫자 패딩 전체 삽입(px는 x축방향만), rounded-pill 추가한 것 #}
+        </form>
 
-    <div style="height: 20rem; background-color: aqua; margin: 2rem; border-radius: 1rem;">
-        <h1>TEST</h1>
-        <div class="testing" style="height: 48px; width: 48px";>block</div>
-        <div class="testing" style="height: 3em; width: 3em";>block</div>
-        <div class="testing" style="height: 3rem; width: 3rem";>block</div>
-        <div class="testing" style="height: 30%; width: 30%";>block</div>
+        <h3>{{ text }}</h3>  {# views의 context 키값 #}
     </div>
 
 {% endblock %}
