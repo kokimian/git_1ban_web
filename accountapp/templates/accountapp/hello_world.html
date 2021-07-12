@@ -15,13 +15,12 @@
 
         </form>
 
-        {% if hello_world_list %}
-            {% for hello_world in hello_world_list %}
+        {% for hello_world in hello_world_list %}
                 <h3>
                 {{ hello_world.text }}
                 </h3>  {# views의 context 키값 #}
-            {% endfor %}
-        {% endif %}
+        {% endfor %}
+
     </div>
 
 {% endblock %}
