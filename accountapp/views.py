@@ -19,7 +19,7 @@ def hello_world(request):
         new_hello_world.text = temp
         new_hello_world.save()
 
-        hello_world_list = HelloWorld.objects.all()
+        # hello_world_list = HelloWorld.objects.all()
         return HttpResponseRedirect(reverse('accountapp:hello_world'))
 
     else:
@@ -33,5 +33,5 @@ def hello_world(request):
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world') # 23번줄 return HttpResponseRedirect(reverse('accountapp:hello_world')) 에서는 reverse 로 바로 받았지만 여기선 lazy가 붙는다. 바로 작동하는게 아니라 나중에 작동하기때문에.
+    success_url = reverse_lazy('accountapp:hello_world') # line 23 reverse과의 차이. 로 바로 받았지만 여기선 lazy가 붙는다. 함수에서 불러오는 방식과 클래스에서 불러오는 방식이 다르다고 생각하자. 깊게 들어가면 복잡.
     template_name = 'accountapp/create.html'
