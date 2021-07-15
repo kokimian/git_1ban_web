@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="text-center mw-500 m-auto">
+    <div class="m-5">
+        <h4>Update Info</h4>
+    </div>
+    <div>
+        <form action="{% url 'accountapp:update' pk=target_user.pk %}" method="post"> {# 이제부턴 url 라우팅을 이런 방식으로 일원화 한다. 이전 방식은 /accounts/create} #}
+            {% csrf_token %} {# post 로 보내면 항상 필요.#}
+            {% bootstrap_form form %} {# view line 35에서 form_class를 지정해 두었기 때문에 이렇게 한번에 form 적용 가능 'form_class = UserCreationForm' #}
+            <div class="m-5">
+                <input type="submit"
+                       class="btn btn-dark rounded-pill px-5">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
