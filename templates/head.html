@@ -14,4 +14,28 @@
 
     {#  DEFAULT CSS LINK #}                        {# 제일위에 {% load static %} 써야함 #}
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+
+    <style>
+        @font-face {
+            font-family: 'NanumSquareR';
+            src: local('NanumSquareR'), {# 콜론아니고 컴마임. 주의. local은 사용자 컴퓨터, 이곳을 검색해서 폰트가 있으면 그대로 사용하고, 없다면, 아래 url 요청해서 해당 파일을 기반으로 설정해라 #}
+            url("{% static 'fonts/NanumSquareR.otf' %}") format("opentype");
+        }
+        @font-face {
+            font-family: 'NanumSquareEB';
+            src: local('NanumSquareEB'),
+            url("{% static 'fonts/NanumSquareEB.otf' %}") format("opentype");
+        }
+        @font-face {
+            font-family: 'NanumSquareB';
+            src: local('NanumSquareB'),
+            url("{% static 'fonts/NanumSquareB.otf' %}") format("opentype");
+        }
+        @font-face {
+            font-family: 'NanumSquareL';
+            src: local('NanumSquareL'),
+            url("{% static 'fonts/NanumSquareL.otf' %}") format("opentype");
+        }
+    </style>
+
 </head>
