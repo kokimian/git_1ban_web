@@ -11,6 +11,11 @@ def print_hello():
     print("안녕하세요!")
 
 add_print_to(print_hello())
+print()
+add_print_to(print_hello)()
+print()
+# add_print_to(print_hello())() #error
+
 
 
 # def decorator(func):
