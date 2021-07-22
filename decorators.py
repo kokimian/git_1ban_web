@@ -1,4 +1,3 @@
-
 def add_print_to(original):
     def wrapper():
         print("함수시작")
