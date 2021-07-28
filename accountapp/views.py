@@ -43,8 +43,11 @@ def hello_world(request):
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world') # line 23 reverse과의 차이. 로 바로 받았지만 여기선 lazy가 붙는다. 함수에서 불러오는 방식과 클래스에서 불러오는 방식이 다르다고 생각하자. 깊게 들어가면 복잡.
+    #success_url = reverse_lazy('accountapp:hello_world') # line 23 reverse과의 차이. 로 바로 받았지만 여기선 lazy가 붙는다. 함수에서 불러오는 방식과 클래스에서 불러오는 방식이 다르다고 생각하자. 깊게 들어가면 복잡.
     template_name = 'accountapp/create.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk': self.object.pk})
 
 
 class AccountDetailView(DetailView):
@@ -52,7 +55,9 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
+
 has_ownership = [account_ownership_required, login_required]
+
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
@@ -60,8 +65,11 @@ class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:hello_world')
+    #success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/update.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk': self.object.pk})
 
     # def get(self, request, *args, **kwargs):
     #     if request.user.is_authenticated and self.get_object() == request.user: # and 문 추가. 로그인만 되어있으면 다른 사용자의 페이지에 접속 가능한 것을 막기위해.
