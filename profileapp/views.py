@@ -24,9 +24,10 @@ class ProfileCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('accountapp:detail',
+        return reverse('accountapp:detail', kwargs={'pk': self.object.user.pk})
 
-@method_decorator(profile_ownership_required, 'get') #accounts 로 설정 안한사람은 login_required(안에 주소)커스텀해야한다
+# accounts 로 설정 안한사람은 login_required(안에 주소)커스텀해야한다
+@method_decorator(profile_ownership_required, 'get')
 @method_decorator(profile_ownership_required, 'post')
 class ProfileUpdateView(UpdateView):
     model = Profile
@@ -36,3 +37,4 @@ class ProfileUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('accountapp:detail', kwargs={'pk': self.object.user.pk})
+#self.object가 target_user라고 생각해야함 profileapp의 유저가 아니라 accountapp의 유저로 가야하므로 .user필요
