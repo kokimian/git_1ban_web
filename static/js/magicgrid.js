@@ -282,4 +282,6 @@ let magicGrid = new MagicGrid({
   useMin: true
 });
 
+
+
 magicGrid.listen();
