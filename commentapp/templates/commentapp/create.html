@@ -5,17 +5,16 @@
 
 <div class="text-center mw-500 m-auto">
     <div class="m-5">
-        <h4>Comment Article</h4>
+        <h4>Comment Create</h4>
     </div>
     <div>
-        <form action="{% url 'commentapp:create' %}"
-              enctype="multipart/form-data"
-              method="post">
+        <form action="{% url 'commentapp:create' %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             <input type="hidden"
                    name="article_pk"
-                   value="{{ target_article.pk }}">
+                   value="{{ target_article.pk }}"> {# 지금 이 게시글의 pk를 넘겨준다 이름은 article_pk 로. commentapp view에서 사용 #}
+                                                    {# articleapp의 detail의 target_article #}
             <div class="m-5">
                 <input type="submit"
                        class="btn btn-dark rounded-pill px-5">

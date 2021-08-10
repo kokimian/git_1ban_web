@@ -38,8 +38,26 @@
         <hr>
         <div class="text-center my-4">
             {# 댓글 #}
+            {% for comment in target_article.comment.all %}
+
+                <div class="comment_box">
+                    <div>
+                        <span style="font-size: 1.3rem;" class="NNS_B">
+                            {{ comment.writer.profile.nickname }}
+                        </span>
+                        <span>{{ comment.created_at }}</span>
+                    </div>
+                    <div class="my-2">
+                        <p>{{ comment.content }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
             {% include 'commentapp/create.html' %}
+            {#  create.html 안에는 bootstrap_form form 으로 form 을 출력하고 있다. mixin을 안하면 부트스트랩폼이 없다고 에러. article view에 mixin 해야함.  #}
         </div>
+
     </div>
 
 {% endblock %}
