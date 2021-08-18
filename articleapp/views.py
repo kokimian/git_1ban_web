@@ -7,8 +7,10 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 from django.views.generic.edit import FormMixin
 
-from accountapp.templates.accountapp.forms import ArticleCreationForm
+
+
 from articleapp.decorators import article_ownership_required
+from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
 from commentapp.forms import CommentCreationForm
 

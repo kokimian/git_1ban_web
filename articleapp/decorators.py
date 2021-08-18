@@ -1,6 +1,5 @@
-from django.http import HttpResponseForbidden
-
 from articleapp.models import Article
+from django.http import HttpResponseForbidden
 
 
 def article_ownership_required(func):

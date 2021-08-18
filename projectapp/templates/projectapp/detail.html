@@ -16,4 +16,9 @@
 
 </div>
 
+    <div>
+        {% include 'snippets/list_fragment.html' with article_list=object_list %}
+            {# list_fragment에서 사용하는 article_list 객체는 현재 projectapp의 object_list로 연결 #}
+    </div>
+
 {% endblock %}

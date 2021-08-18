@@ -1,7 +1,4 @@
-{% extends 'base.html' %}
 {% load static %}
-
-{% block content %}
 
     <style>
         .container {
@@ -10,20 +7,18 @@
         }
 
         .container div {
-          {#width: 45%;#}
-          {#  max-width: 200px;#}
+          width: 45%;
+            max-width: 200px;
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 1rem;
             flex-direction: column;
-            {#box-shadow: 0 0 1rem darkgrey;#}
+            box-shadow: 0 0 1rem darkgrey;
         }
 
         div img {
-            width: 7rem;
-            height: 7rem;
-            object-fit: cover;
+            width: 100%;
             border-radius: 1rem;
 
         }
@@ -32,13 +27,13 @@
 
     <div class="container my-3">
 
-        {% for project in project_list %}
+        {% for article in article_list %}
 
             <div>
-                <a href="{% url 'projectapp:detail' pk=project.pk %}">
-                    <img src="{{ project.image.url }}" alt="">
+                <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                    <img src="{{ article.image.url }}" alt="">
                 </a>
-                <span class="NNS_B m-2">{{ project.name | truncatechars:10 }}</span>
+                <span class="NNS_B m-2">{{ article.title }}</span>
             </div>
 
         {% endfor %}
@@ -51,10 +46,12 @@
     {% include 'snippets/pagination.html' %}
 
     <div class="text-center my-5">
-        <a href="{% url 'projectapp:create' %}"
+        <a href="{% url 'articleapp:create' %}"
+            class="btn btn-dark rounded-pill px-5 material-icons">
+            brush
+        </a>
+        <a href="{% url 'articleapp:create' %}"
             class="btn btn-dark rounded-pill px-5">
-            Create Project
+            Create Article
         </a>
     </div>
-
-{% endblock %}
