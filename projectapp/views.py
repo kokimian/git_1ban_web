@@ -37,13 +37,12 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
     # 아래와 같이 오버라이드(detail.html 에서 사용할 문맥 정보들을 커스터마이징 하는 것)
     def get_context_data(self, **kwargs):
         user = self.request.user
-        project  = self.object
+        project = self.object
 
-        subscription = Subscription.objects.filter(user=user,
-                                                   project=project)
+        if user.is_authenticated:
+            subscription = Subscription.objects.filter(user=user,
+                                                       project=project)
 
-        if subscription.exists():
-            subscription = 1
         else:
             subscription = None
 
