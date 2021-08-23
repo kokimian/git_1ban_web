@@ -59,4 +59,3 @@ class ProjectListView(ListView):
     context_object_name = 'project_list'  # 보통 만드는 방식(target-project) 아님. 게시판의 list를 담고 있다는 뜻??
     template_name = 'projectapp/list.html'
     paginate_by = 20
-
