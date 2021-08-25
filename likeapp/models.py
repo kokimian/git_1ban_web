@@ -13,4 +13,3 @@ class LikeRecord(models.Model):
 
     class Meta:
         unique_together = ['user', 'article']
-
