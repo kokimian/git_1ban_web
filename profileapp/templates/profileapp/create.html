@@ -8,9 +8,7 @@
         <h4>Create Profile</h4>
     </div>
     <div>
-        <form action="{% url 'profileapp:create' %}"
-              enctype="multipart/form-data"
-              method="post"> {# 이제부턴 url 라우팅을 이런 방식으로 일원화 한다. 이전 방식은 /accounts/create} #}
+        <form action="{% url 'profileapp:create' %}" method="post" enctype="multipart/form-data"> {# 이제부턴 url 라우팅을 이런 방식으로 일원화 한다. 이전 방식은 /accounts/create} #}
             {% csrf_token %} {# post 로 보내면 항상 필요.#}
             {% bootstrap_form form %} {# view line 35에서 form_class를 지정해 두었기 때문에 이렇게 한번에 form 적용 가능 'form_class = UserCreationForm' #}
             <div class="m-5">

@@ -11,7 +11,7 @@
                  alt="profile image">
             <h2 class="NNS_B">
                 {{ target_user.profile.nickname }}
-                {% if user == target_user %}
+                {% if target_user == user %}
                     <a href="{%  url 'profileapp:update' pk=target_user.profile.pk %}"
                         class="material-icons round_button">
                         edit
@@ -20,11 +20,17 @@
             </h2>
             <h5>{{ target_user.profile.message }}</h5>
         {% else %}
-        <h2 class="NNS_B">
-            <a href="% url 'profileapp:create' %">
-                Create Profile
-            </a>
-        </h2>
+            {% if target_user == user %}
+            <h2 class="NNS_B">
+                <a href="{% url 'profileapp:create' %}">
+                    Create Profile
+                </a>
+            </h2>
+            {% else %}
+            <h2>
+                프로필 미설정
+            </h2>
+            {% endif %}
         {% endif %}
     </div>
 {#    <div>#}
