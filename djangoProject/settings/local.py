@@ -16,7 +16,6 @@ while True:
     env_list[key] = value
 
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env_list['SECRET_KEY']
 
