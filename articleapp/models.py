@@ -19,3 +19,5 @@ class Article(models.Model):
 
     like = models.IntegerField(default=0)
 
+    # class Meta:
+    #     ordering = ['pk']
