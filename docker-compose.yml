@@ -12,9 +12,13 @@ services:
       - 80:80
 
   django:
-    image: djangoproject:4
+    image: djangoproject:5
     networks:
       - djangoproject_network
+    secrets:
+      - DJANGO_SECRET_KEY
+      - MARIADB_USER
+      - MARIADB_PASSWORD
     volumes:
       - djangoproject_static:/home/git_1ban_web/staticfiles/
       - djangoproject_media:/home/git_1ban_web/media/
@@ -25,11 +29,15 @@ services:
       - djangoproject_network
     volumes:
       - djangoproject_mariadb:/var/lib/mysql/
+    secrets:
+      - MARIADB_USER
+      - MARIADB_PASSWORD
+      - MARIADB_ROOT_PASSWORD
     environment:
       MARIADB_DATABASE: django
-      MARIADB_USER: django
-      MARIADB_PASSWORD: asdf1234!
-      MARIADB_ROOT_PASSWORD: asdf1234!
+      MARIADB_USER_FILE: /run/secrets/MARIADB_USER
+      MARIADB_PASSWORD_FILE: /run/secrets/MARIADB_PASSWORD
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/MARIADB_ROOT_PASSWORD
 
 networks:
   djangoproject_network:
@@ -38,3 +46,13 @@ volumes:
   djangoproject_static:
   djangoproject_media:
   djangoproject_mariadb:
+
+secrets:
+  MARIADB_USER:
+    external: true
+  MARIADB_PASSWORD:
+    external: true
+  MARIADB_ROOT_PASSWORD:
+    external: true
+  DJANGO_SECRET_KEY:
+    external: true
